@@ -15,8 +15,8 @@ VERBOSE = True
 HOSTNAME = "0.0.0.0"
 PORT = 8080
 
-GPIO = 17
-FREQ = 38
+GPIO = 18
+FREQ = 38.0
 
 def log_verbose(msg: str) -> str:
     if VERBOSE:
@@ -43,7 +43,7 @@ class MyServer(BaseHTTPRequestHandler):
                 log_verbose(f"Switch id 'key'")
                 if key in ROBLIN_IR:
                     msg = log_info(f"Switching <b>'{key}'</b>")
-                    send_code(ROBLIN_IR[key], 17, 38)
+                    send_code(ROBLIN_IR[key], GPIO, FREQ)
                 else:
                     msg = log_info(f"Unknown key <b>'{key}'</b>")
             else:
